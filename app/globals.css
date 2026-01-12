@@ -1,10 +1,16 @@
 @import "tailwindcss";
 
-:root {
-  /* FOnt syles */
-  --font-sora: var(--font-sora);
+@custom-variant dark (&:is(.dark *));
 
-  /* Neutral Colors */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Sora', sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+   /* Neutral Colors */
   --neutral-900: hsl(0, 0%, 7%);
   --neutral-800: hsl(0, 0%, 15%);
   --neutral-500: hsl(240, 3%, 46%);
@@ -24,70 +30,18 @@
   /* Yellow Colors */
   --yellow-400: hsl(49, 85%, 70%);
 
-  /* Background / foreground aliases */
   --background: var(--neutral-0);
   --foreground: var(--neutral-900);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: 'Sora', sans-serif;
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--neutral-900);
-    --foreground: var(--neutral-0);
-  }
+.dark {
+  --background: var(--neutral-900);
+  --foreground: var(--neutral-0);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sora);
+  font-family: var(--font-sans);
   font-size: 16px;
-}
-
-@layer utilities {
-  .text-preset-1 {
-    @apply font-sora font-bold text-5xl tracking-wide leading-[136%];
-  }
-
-  .text-preset-1-regular {
-    @apply font-sora font-normal text-4xl tracking-wide leading-[136%];
-  }
-
-  .text-preset-1-regular-mobile {
-    @apply font-sora font-normal text-3xl tracking-wide leading-[136%];
-  }
-
-  .text-preset-2 {
-    @apply font-sora font-bold text-2xl;
-  }
-
-  .text-preset-3 {
-    @apply font-sora font-regular text-xl leading-[120%] -tracking-[0.6px];
-  }
-
-  .text-preset-3-mobile {
-    @apply font-sora font-regular text-base leading-[120%] -tracking-[0.48px];
-  }
-
-  .text-preset-3-semi {
-    @apply font-sora font-semibold text-xl leading-[120%] -tracking-[0.3px];
-  }
-
-  .text-preset-4 {
-    @apply font-sora font-normal text-lg leading-[120%] -tracking-[0.6px];
-  }
-
-  .text-preset-5 {
-    @apply font-sora font-normal text-base leading-[120%] -tracking-[0.48px];
-  }
-
-  .text-preset-6 {
-    @apply font-sora font-normal text-sm leading-[120%];
-  }
 }

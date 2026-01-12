@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import {  Sora } from "next/font/google";
+import { Geist, Geist_Mono, Sora } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import Header from "@/components/Header";
 
 
 const sora = Sora({
   weight: ["400", "600", "700"],
-  variable: "--font-sora",
-  subsets: ["latin"]
+  variable: "--font-sora"
 })
 
 export const metadata: Metadata = {
@@ -20,11 +21,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${sora.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            {children}
+          </ThemeProvider>
       </body>
     </html>
   );
